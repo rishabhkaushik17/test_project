@@ -1,0 +1,241 @@
+Exersize 3
+Name : Rishabh Kaushik
+
+1. Create two folders project1 and project2 locally. Create a repository in github or bitbucket, name it test_project.
+    
+    mkdir project1
+    mkdir project
+    
+2. Switch to project1
+    
+    cd project1
+    
+3. Switch to a new branch - 'staging'.
+    
+    git checkout -b staging
+    
+4. Add a file in it - 'test1' and add content to it 'This is first commit'.
+    
+    nano test1
+    git add .
+    git commit -m "This is first commit"
+    
+    I also added same text in test1 file also.
+    
+5. Push it to github.
+    
+    git remote set-url origin git@github.com:rishabhkaushik17/test_project.git
+    
+    git checkout master
+    git push origin master
+    git checkout staging
+    git push origin staging
+    
+6. Move to folder project2.
+    
+    cd ..
+    3154  cd project2
+    
+7. Clone the repo in project2.
+    
+    git clone https://github.com/rishabhkaushik17/test_project
+    
+8. Switch to staging.
+    
+    git checkout staging
+    
+9. Change the text in file 'test1' to 'This is second commit'.
+    
+    nano test1
+    
+10. Commit and push to remote branch.
+    
+    git add .
+    git commit -m "This is second commit"
+    git push origin staging
+    
+11. Move to project1.
+    
+    cd ..
+    cd project1
+    
+12. Switch to staging branch.
+    
+    git switch staging
+    
+13. Change the text in file 'test1' to 'This is third commit'.
+    
+    nano test1
+    
+14. Commit and push to remote branch.
+    
+    git add .
+    git commit -m "This is third commit"
+    git push origin staging
+    
+    Comment : git pull request is rejected because test1 in remote repository has conflicts with test1 in local repository. So I first used "git pull" command to pull the changes and then merged the FETCH_HEAD branch with the staging branch as the pull request does the changes in FETCH_HEAD in my case. I manually resolved the conflicts in test1 and then pushed again after resolving the conflicts.
+    
+    git pull origin staging
+    git merge FETCH_HEAD
+    git status
+    nano test1
+    git add .
+    git commit
+    
+    git push origin staging
+    
+15. Switch to master.
+    
+    git checkout master
+    
+16. Merge staging branch into master.
+    
+    git merge staging
+    
+17. Create a new branch testing.
+    
+    git checkout -b testing
+    
+18. Change the text to 'A is an alphabet' and commit.
+    
+    nano test1
+    git commit -a -m "Alphabet A"
+    
+19. Repeat the 'step 18' seven times and each time update the alphabet 'A' to 'B' to 'C' etc.(Don't forget to commit the change every-time)
+    
+    nano test1
+    git commit -a -m "Alphabet B"
+    nano test1
+    git commit -a -m "Alphabet C"
+    nano test1
+    git commit -a -m "Alphabet D"
+    nano test1
+    git commit -a -m "Alphabet E"
+    nano test1
+    git commit -a -m "Alphabet F"
+    nano test1
+    git commit -a -m "Alphabet G"
+    
+20. Push the branch to github.
+    
+    git push origin testing
+    
+21. Checkout to master.
+    
+    git checkout master
+    
+22. Change the text '1 is a number' and commit.
+    
+    nano test1
+    git commit -a -m "Number 1"
+    
+23. Repeat the 'step 22' seven times and each time update the number '1' to '2' to '3' etc.(Don't forget to commit the change everytime)
+    
+    nano test1
+    git commit -a -m "Number 2"
+    nano test1
+    git commit -a -m "Number 3"
+    nano test1
+    git commit -a -m "Number 4"
+    nano test1
+    git commit -a -m "Number 5"
+    nano test1
+    git commit -a -m "Number 6"
+    nano test1
+    git commit -a -m "Number 7"
+    
+24. Push master branch to github.
+    
+    git push origin master
+    
+25. Now, rebase testing into master(and don't push the new master and testing branch).
+    
+    git checkout testing
+    git rebase master
+    
+    The request was rejected. So I did following steps.
+    
+    nano test1
+    git add test1
+    git commit -m "A and 7"
+    git rebase --continue
+    
+    nano test1
+    git add .
+    git commit -m "A B and 7"
+    git rebase --continue
+    nano test1
+    git commit -m "A B C and 7"
+    git add .
+    git commit -m "A B C and 7"
+    git rebase --continue
+    nano test1
+    git add .
+    git commit -m "A B C D and 7"
+    git rebase --continue
+    nano test1
+    git add .
+    git commit -m "A B C D E and 7"
+    git rebase --continue
+    nano test1
+    git add .
+    git commit -m "A B C D E F and 7"
+    git log
+    git rebase --continue
+    nano test1
+    git add .
+    git commit -m "A B C D E F G and 7"
+    git rebase --continue
+    git log
+    git checkout master
+    git rebase testing
+    
+    nano test1
+    git add .
+    git commit -m "A B and 7"
+    git rebase --continue
+    nano test1
+    git commit -m "A B C and 7"
+    git add .
+    git commit -m "A B C and 7"
+    git rebase --continue
+    nano test1
+    git add .
+    git commit -m "A B C D and 7"
+    git rebase --continue
+    nano test1
+    git add .
+    git commit -m "A B C D E and 7"
+    git rebase --continue
+    git add .
+    nano test1
+    git add .
+    git commit -m "A B C D E F and 7"
+    git rebase --continue
+    nano test1
+    git add .
+    git commit -m "A B C D E F G and 7"
+    git rebase --continue
+    
+    git log
+    git checkout master
+    git rebase testing
+    
+26. Move to project2.
+    
+    cd ..
+    cd project2
+    
+27. Track testing branch.
+    
+    git checkout --track testing origin/testing
+    
+28. Checkout to master
+    
+    git checkout master
+    
+29. Merge branch testing into master.
+    
+    git merge testing
+    
+30. There is no difference between master and testing as master was empty before merging and after merging the branches become identical with the same files and items. Its just that HEAD is pointing to master.
